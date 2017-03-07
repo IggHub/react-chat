@@ -2,8 +2,8 @@ import React from 'react';
 import Rebase from 're-base';
 import AddChatroom from './AddChatroom';
 import DisplayChatrooms from './DisplayChatrooms';
-import {removeChatroom} from '../../lib/chatroomHelpers';
-
+//import {removeChatroom} from '../../lib/chatroomHelpers';
+//import {Router} from 'react-router';
 var base = Rebase.createClass({
   apiKey: "AIzaSyBJrWtLof64CQcH0TZamWfMmhtJ9jf5OYQ",
   authDomain: "react-chat-eca58.firebaseapp.com",
@@ -32,12 +32,18 @@ class Chatroom extends React.Component{
     })
     console.log('concated', this.state.rooms)
   }
-  handleRemove(e) {
-    var array =  this.state.rooms;
-    var index = array.indexOf(e.target.value);
-    array.splice(index, e);
+  handleRemove(index) {
+    var array =  this.state.rooms.slice();
+    array.splice(index, 1);
     this.setState({
       rooms: array
+    })
+  }
+  firebaseRemove(e){
+    base.remove('Rooms', function(err){
+      if(err) {
+        console.log(err);
+      }
     })
   }
 
