@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+
 class AddChatroom extends React.Component{
   handleSubmit(){
     var newRoom = ReactDOM.findDOMNode(this.refs.room).value;
@@ -10,7 +11,7 @@ class AddChatroom extends React.Component{
   }
   render(){
     return(
-      <div>
+      <div className="add-chatrooms">
         <input type="text" className="form-control" placeholder="Add a new note" ref="room" />
         <span className="input-group-btn">
           <button className="btn btn-default" type="button" onClick={this.handleSubmit.bind(this)}>Submit</button>
