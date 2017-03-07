@@ -5,7 +5,6 @@ import ReactDOM from 'react-dom';
 class AddChatroom extends React.Component{
   handleSubmit(){
     var newRoom = ReactDOM.findDOMNode(this.refs.room).value;
-    console.log(newRoom);
     ReactDOM.findDOMNode(this.refs.room).value = '';
     this.props.AddRoom(newRoom);
   }
